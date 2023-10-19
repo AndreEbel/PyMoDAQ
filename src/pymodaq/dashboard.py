@@ -36,7 +36,9 @@ from pymodaq import extensions as extmod
 
 from pymodaq_plugin_manager.manager import PluginManager
 from pymodaq_plugin_manager.validate import get_pypi_pymodaq
+from pymodaq.utils.daq_utils import get_instrument_plugins
 
+get_instrument_plugins()
 
 logger = set_logger(get_module_name(__file__))
 
@@ -1038,7 +1040,7 @@ class DashBoard(QObject):
             logger.exception(str(e))
 
     def create_overshoot_fun(self, move_module, position):
-        return lambda: move_module.move_Abs(position)
+        return lambda: move_module.move_abs(position)
 
     @property
     def move_modules(self):
